@@ -1,0 +1,114 @@
+##theCarExercise
+
+public class Car {
+    private String plateNumber;
+    private String carModel;
+    private double dailtRate;
+    private boolean isrented;
+
+    private static String companyName = "Car rental company";
+    private   static int TotalCars = 0;
+
+    // this is when is no argument construccter
+    public Car(){
+        this.plateNumber = "unknown";
+        this.carModel = "toyota";
+        this.dailtRate = 0.0;
+        this.isrented = false;
+        TotalCars++;
+    }
+    // also this is parameterized as we said
+    public Car(String plateNumber,String carModel,double dailtRate){
+        this.plateNumber = plateNumber;
+        this.carModel = carModel;
+        this.dailtRate= dailtRate;
+        this.isrented = false;
+        TotalCars ++;
+    }
+    public String getPlateNumber(){
+        return plateNumber;
+    }
+    public String getCarModel(){
+        return carModel;
+    }
+    public double getDailtRate() {
+        return dailtRate;
+    }
+    public boolean isrented() {
+        return isrented;
+    }
+    public void setDailtRate(double dailtRate) {
+        if (dailtRate >= 0) {
+            this.dailtRate = dailtRate;
+        } else {
+            System.out.println("Daily rate cannot be negative.");
+        }
+    }
+    public void rent() {
+        if (isrented == true) {
+//            isrented = true;
+            System.out.println("Car rented successfully.");
+        } else {
+            System.out.println("Car is already rented.");
+        }
+    }
+    public void returnCar() {
+        if (isrented) {
+            isrented = false;
+            System.out.println("Car returned successfully.");
+        } else {
+            System.out.println("Car is not currently rented.");
+        }
+    }
+    public void displayInfo() {
+        System.out.println("Plate Number: " + plateNumber);
+        System.out.println("Model: " + carModel);
+        System.out.println("Daily Rate: $" + dailtRate);
+        System.out.println("Rented: " + isrented);
+    }
+    public static void displayCompanyName() {
+        System.out.println("Company Name: " + companyName);
+    }
+    public static void displayTotalCars() {
+        System.out.println("Total Cars: " + TotalCars);
+    }
+
+}
+ ##the main part
+public class Main{
+    public  static void main(String[] args) {
+        Car car1 = new Car("ABC-123", "Toyota Corolla", 30.0);
+        Car car2 = new Car("XYZ-456", "Honda Civic", 40.0);
+        Car.displayCompanyName();
+        Car.displayTotalCars();
+
+        System.out.println("\n now lets see the first car`s information👍");
+        car1.displayInfo();
+
+        System.out.println("\n now lets see the first car`s information👍");
+        car2.displayInfo();
+
+        System.out.println("\nRenting Car 1: ");
+        car1.rent();
+
+        System.out.println("\nthis car is already rented🚔");
+        car1.rent();
+
+
+        System.out.println("\n now is time for returning the first car");
+        car1.returnCar();
+
+        System.out.println("\n now lets change the daily rate of car 2");
+        car2.setDailtRate(50.0);
+        car2.displayInfo();
+
+        System.out.println("\n for this time totalCars");
+        Car.displayTotalCars();
+
+    }
+}
+
+
+
+
+
